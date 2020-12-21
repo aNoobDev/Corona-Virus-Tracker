@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Coronavirus Tracker Application</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    
+</head>
+
+<body>
+<div class="container">
+<h1>Coronavirus Tracker Application</h1>
+<p>This application lists the current number of cases reported across all Indian State</p>
+
+<div class="alert alert-primary">
+    
+    <h1 class="lead">Total cases reported as of today in INDIA</h1>
+    <h1 class="display-4" th:text="${total}"></h1>
+    <hr class="my-4">
+
+</div>
+
+    <table class="table table-bordered table-darktable table-bordered table-dark">
+        <tr>
+            <th>State</th>
+            <th>Confirmed</th>
+            <th>Recovered</th>
+            <th>Deaths</th>
+            <th>Active</th>
+            <th>Last Updated On</th>
+            
+        </tr>
+        <tr th:each="locationStat : ${locationStats}">
+            <td th:text="${locationStat.state}"></td>
+            <td th:text="${locationStat.confirmed}"></td>
+            <td th:text="${locationStat.recovered}"></td>
+            <td th:text="${locationStat.deaths}"></td>
+            <td th:text="${locationStat.active}"></td>
+            <td th:text="${locationStat.date}"></td>
+        </tr>
+    </table>
+</div>
+</body>
+
+</html>
